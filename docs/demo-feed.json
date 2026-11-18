@@ -1,0 +1,629 @@
+{
+  "version": 1,
+  "products": [
+    {
+      "id": "demo-0",
+      "sku": "DEMO-197-001",
+      "oem": [
+        "MINTA-OEM-1"
+      ],
+      "name": "FRONT BUMPER",
+      "nameHu": "Első lökhárító",
+      "aliases": [
+        "bumper"
+      ],
+      "category": "Karosszéria",
+      "generation": "S197",
+      "yearFrom": 2005,
+      "yearTo": 2014,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Parts",
+      "price": 189.9,
+      "currency": "EUR",
+      "availability": "available",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-1",
+      "sku": "DEMO-197-002",
+      "oem": [
+        "MINTA-OEM-2"
+      ],
+      "name": "FRONT FENDER LH",
+      "nameHu": "Bal első sárvédő",
+      "aliases": [
+        "fender"
+      ],
+      "category": "Karosszéria",
+      "generation": "S197",
+      "yearFrom": 2005,
+      "yearTo": 2014,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Lighting",
+      "price": 124.5,
+      "currency": "EUR",
+      "availability": "available",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-2",
+      "sku": "DEMO-197-003",
+      "oem": [
+        "MINTA-OEM-3"
+      ],
+      "name": "HOOD",
+      "nameHu": "Motorháztető",
+      "aliases": [
+        "hood"
+      ],
+      "category": "Karosszéria",
+      "generation": "S197",
+      "yearFrom": 2005,
+      "yearTo": 2014,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Suspension",
+      "price": 449,
+      "currency": "EUR",
+      "availability": "unknown",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-3",
+      "sku": "DEMO-197-004",
+      "oem": [
+        "MINTA-OEM-4"
+      ],
+      "name": "HEAD LAMP LH",
+      "nameHu": "Bal első fényszóró",
+      "aliases": [
+        "lamp"
+      ],
+      "category": "Világítás",
+      "generation": "S197",
+      "yearFrom": 2005,
+      "yearTo": 2014,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Parts",
+      "price": 329,
+      "currency": "EUR",
+      "availability": "unavailable",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-4",
+      "sku": "DEMO-197-005",
+      "oem": [
+        "MINTA-OEM-5"
+      ],
+      "name": "CONTROL ARM RH",
+      "nameHu": "Jobb első lengőkar",
+      "aliases": [
+        "arm"
+      ],
+      "category": "Futómű",
+      "generation": "S197",
+      "yearFrom": 2005,
+      "yearTo": 2014,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Lighting",
+      "price": 68.9,
+      "currency": "EUR",
+      "availability": "available",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-5",
+      "sku": "DEMO-197-006",
+      "oem": [
+        "MINTA-OEM-6"
+      ],
+      "name": "RADIATOR",
+      "nameHu": "Vízhűtő",
+      "aliases": [
+        "radiator"
+      ],
+      "category": "Motor és hűtés",
+      "generation": "S197",
+      "yearFrom": 2005,
+      "yearTo": 2014,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Suspension",
+      "price": 139,
+      "currency": "EUR",
+      "availability": "available",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-6",
+      "sku": "DEMO-197-007",
+      "oem": [
+        "MINTA-OEM-7"
+      ],
+      "name": "REAR SPOILER",
+      "nameHu": "Hátsó spoiler",
+      "aliases": [
+        "spoiler"
+      ],
+      "category": "Kiegészítők",
+      "generation": "S197",
+      "yearFrom": 2005,
+      "yearTo": 2014,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Parts",
+      "price": 159,
+      "currency": "EUR",
+      "availability": "unknown",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-7",
+      "sku": "DEMO-197-008",
+      "oem": [
+        "MINTA-OEM-8"
+      ],
+      "name": "REAR LAMP",
+      "nameHu": "Hátsó lámpa",
+      "aliases": [
+        "lamp"
+      ],
+      "category": "Világítás",
+      "generation": "S197",
+      "yearFrom": 2005,
+      "yearTo": 2014,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Lighting",
+      "price": 215,
+      "currency": "EUR",
+      "availability": "unavailable",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-8",
+      "sku": "DEMO-550-001",
+      "oem": [
+        "MINTA-OEM-9"
+      ],
+      "name": "FRONT BUMPER",
+      "nameHu": "Első lökhárító",
+      "aliases": [
+        "bumper"
+      ],
+      "category": "Karosszéria",
+      "generation": "S550",
+      "yearFrom": 2015,
+      "yearTo": 2023,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Suspension",
+      "price": 189.9,
+      "currency": "EUR",
+      "availability": "available",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-9",
+      "sku": "DEMO-550-002",
+      "oem": [
+        "MINTA-OEM-10"
+      ],
+      "name": "FRONT FENDER LH",
+      "nameHu": "Bal első sárvédő",
+      "aliases": [
+        "fender"
+      ],
+      "category": "Karosszéria",
+      "generation": "S550",
+      "yearFrom": 2015,
+      "yearTo": 2023,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Parts",
+      "price": 124.5,
+      "currency": "EUR",
+      "availability": "available",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-10",
+      "sku": "DEMO-550-003",
+      "oem": [
+        "MINTA-OEM-11"
+      ],
+      "name": "HOOD",
+      "nameHu": "Motorháztető",
+      "aliases": [
+        "hood"
+      ],
+      "category": "Karosszéria",
+      "generation": "S550",
+      "yearFrom": 2015,
+      "yearTo": 2023,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Lighting",
+      "price": 449,
+      "currency": "EUR",
+      "availability": "unknown",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-11",
+      "sku": "DEMO-550-004",
+      "oem": [
+        "MINTA-OEM-12"
+      ],
+      "name": "HEAD LAMP LH",
+      "nameHu": "Bal első fényszóró",
+      "aliases": [
+        "lamp"
+      ],
+      "category": "Világítás",
+      "generation": "S550",
+      "yearFrom": 2015,
+      "yearTo": 2023,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Suspension",
+      "price": 329,
+      "currency": "EUR",
+      "availability": "unavailable",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-12",
+      "sku": "DEMO-550-005",
+      "oem": [
+        "MINTA-OEM-13"
+      ],
+      "name": "CONTROL ARM RH",
+      "nameHu": "Jobb első lengőkar",
+      "aliases": [
+        "arm"
+      ],
+      "category": "Futómű",
+      "generation": "S550",
+      "yearFrom": 2015,
+      "yearTo": 2023,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Parts",
+      "price": 68.9,
+      "currency": "EUR",
+      "availability": "available",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-13",
+      "sku": "DEMO-550-006",
+      "oem": [
+        "MINTA-OEM-14"
+      ],
+      "name": "RADIATOR",
+      "nameHu": "Vízhűtő",
+      "aliases": [
+        "radiator"
+      ],
+      "category": "Motor és hűtés",
+      "generation": "S550",
+      "yearFrom": 2015,
+      "yearTo": 2023,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Lighting",
+      "price": 139,
+      "currency": "EUR",
+      "availability": "available",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-14",
+      "sku": "DEMO-550-007",
+      "oem": [
+        "MINTA-OEM-15"
+      ],
+      "name": "REAR SPOILER",
+      "nameHu": "Hátsó spoiler",
+      "aliases": [
+        "spoiler"
+      ],
+      "category": "Kiegészítők",
+      "generation": "S550",
+      "yearFrom": 2015,
+      "yearTo": 2023,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Suspension",
+      "price": 159,
+      "currency": "EUR",
+      "availability": "unknown",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-15",
+      "sku": "DEMO-550-008",
+      "oem": [
+        "MINTA-OEM-16"
+      ],
+      "name": "REAR LAMP",
+      "nameHu": "Hátsó lámpa",
+      "aliases": [
+        "lamp"
+      ],
+      "category": "Világítás",
+      "generation": "S550",
+      "yearFrom": 2015,
+      "yearTo": 2023,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Parts",
+      "price": 215,
+      "currency": "EUR",
+      "availability": "unavailable",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-16",
+      "sku": "DEMO-650-001",
+      "oem": [
+        "MINTA-OEM-17"
+      ],
+      "name": "FRONT BUMPER",
+      "nameHu": "Első lökhárító",
+      "aliases": [
+        "bumper"
+      ],
+      "category": "Karosszéria",
+      "generation": "S650",
+      "yearFrom": 2024,
+      "yearTo": null,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Lighting",
+      "price": 189.9,
+      "currency": "EUR",
+      "availability": "available",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-17",
+      "sku": "DEMO-650-002",
+      "oem": [
+        "MINTA-OEM-18"
+      ],
+      "name": "FRONT FENDER LH",
+      "nameHu": "Bal első sárvédő",
+      "aliases": [
+        "fender"
+      ],
+      "category": "Karosszéria",
+      "generation": "S650",
+      "yearFrom": 2024,
+      "yearTo": null,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Suspension",
+      "price": 124.5,
+      "currency": "EUR",
+      "availability": "available",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-18",
+      "sku": "DEMO-650-003",
+      "oem": [
+        "MINTA-OEM-19"
+      ],
+      "name": "HOOD",
+      "nameHu": "Motorháztető",
+      "aliases": [
+        "hood"
+      ],
+      "category": "Karosszéria",
+      "generation": "S650",
+      "yearFrom": 2024,
+      "yearTo": null,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Parts",
+      "price": 449,
+      "currency": "EUR",
+      "availability": "unknown",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-19",
+      "sku": "DEMO-650-004",
+      "oem": [
+        "MINTA-OEM-20"
+      ],
+      "name": "HEAD LAMP LH",
+      "nameHu": "Bal első fényszóró",
+      "aliases": [
+        "lamp"
+      ],
+      "category": "Világítás",
+      "generation": "S650",
+      "yearFrom": 2024,
+      "yearTo": null,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Lighting",
+      "price": 329,
+      "currency": "EUR",
+      "availability": "unavailable",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-20",
+      "sku": "DEMO-650-005",
+      "oem": [
+        "MINTA-OEM-21"
+      ],
+      "name": "CONTROL ARM RH",
+      "nameHu": "Jobb első lengőkar",
+      "aliases": [
+        "arm"
+      ],
+      "category": "Futómű",
+      "generation": "S650",
+      "yearFrom": 2024,
+      "yearTo": null,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Suspension",
+      "price": 68.9,
+      "currency": "EUR",
+      "availability": "available",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-21",
+      "sku": "DEMO-650-006",
+      "oem": [
+        "MINTA-OEM-22"
+      ],
+      "name": "RADIATOR",
+      "nameHu": "Vízhűtő",
+      "aliases": [
+        "radiator"
+      ],
+      "category": "Motor és hűtés",
+      "generation": "S650",
+      "yearFrom": 2024,
+      "yearTo": null,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Parts",
+      "price": 139,
+      "currency": "EUR",
+      "availability": "available",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-22",
+      "sku": "DEMO-650-007",
+      "oem": [
+        "MINTA-OEM-23"
+      ],
+      "name": "REAR SPOILER",
+      "nameHu": "Hátsó spoiler",
+      "aliases": [
+        "spoiler"
+      ],
+      "category": "Kiegészítők",
+      "generation": "S650",
+      "yearFrom": 2024,
+      "yearTo": null,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Lighting",
+      "price": 159,
+      "currency": "EUR",
+      "availability": "unknown",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    },
+    {
+      "id": "demo-23",
+      "sku": "DEMO-650-008",
+      "oem": [
+        "MINTA-OEM-24"
+      ],
+      "name": "REAR LAMP",
+      "nameHu": "Hátsó lámpa",
+      "aliases": [
+        "lamp"
+      ],
+      "category": "Világítás",
+      "generation": "S650",
+      "yearFrom": 2024,
+      "yearTo": null,
+      "model": "Ford Mustang",
+      "fitment": "Bemutató adat. Motor, kivitel és csomag szerinti illeszkedés nincs igazolva.",
+      "brand": "DEMO Suspension",
+      "price": 215,
+      "currency": "EUR",
+      "availability": "unavailable",
+      "images": [],
+      "url": "https://www.signeda.lt/",
+      "source": "demo",
+      "checkedAt": null
+    }
+  ]
+}

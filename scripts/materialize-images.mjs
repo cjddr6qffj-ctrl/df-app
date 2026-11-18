@@ -1,0 +1,2 @@
+import {readFile,mkdir,copyFile,access} from 'node:fs/promises';import {createHash} from 'node:crypto';import {resolve} from 'node:path';
+const state=JSON.parse(await readFile('data/signeda/catalog-checkpoint.json','utf8'));await mkdir('public/catalog-images',{recursive:true});let copied=0,missing=0;for(const [url,path] of Object.entries(state.imageFiles??{})){const dest=resolve('public/catalog-images',createHash('sha256').update(url).digest('hex')+'.webp');try{await access(dest);}catch{try{await copyFile(path,dest);copied++;}catch{missing++;}}}console.log({copied,missing});

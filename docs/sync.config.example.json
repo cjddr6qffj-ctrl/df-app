@@ -1,0 +1,9 @@
+{
+  "termsReviewedAt": "2026-11-12T00:00:00.000Z",
+  "termsUrl": "https://approved-provider.example/terms",
+  "permissionNote": "PÉLDA: itt rögzítsd a ténylegesen ellenőrzött adatfelhasználási feltételeket.",
+  "allowedOrigins": ["https://approved-provider.example"],
+  "productUrls": ["https://approved-provider.example/normalized/mustang-part.json"],
+  "output": "./sync-output/catalog-feed.json",
+  "intervalMs": 5000
+}

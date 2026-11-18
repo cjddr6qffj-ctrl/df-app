@@ -1,0 +1,32 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Local catalogue persistence only",
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:default",
+    "sql:default",
+    "sql:allow-execute",
+    {
+      "identifier": "opener:allow-open-url",
+      "allow": [
+        {
+          "url": "https://www.signeda.lt/*"
+        },
+        {
+          "url": "https://signeda.lt/*"
+        },
+        {
+          "url": "https://www.signeda.com/*"
+        },
+        {
+          "url": "https://signeda.com/*"
+        }
+      ]
+    },
+    "updater:default",
+    "process:allow-restart"
+  ]
+}

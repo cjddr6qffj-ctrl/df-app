@@ -1,0 +1,26 @@
+name: Desktop build
+on: [workflow_dispatch]
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: dtolnay/rust-toolchain@stable
+      - run: npm ci
+      - run: npm test
+      - run: npm run bundle
+      - uses: actions/upload-artifact@v4
+        with:
+          name: df-tuning-${{ matrix.os }}
+          path: src-tauri/target/release/bundle/

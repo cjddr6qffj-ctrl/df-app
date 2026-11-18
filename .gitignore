@@ -1,0 +1,16 @@
+node_modules/
+dist/
+src-tauri/target/
+*.log
+sync-output/
+
+.release/
+.env*
+!.env.example
+src-tauri/tauri.release.conf.json
+
+src-tauri/gen/
+data/
+delivery/
+df-tuning-desktop/
+.DS_Store

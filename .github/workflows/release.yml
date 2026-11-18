@@ -1,0 +1,56 @@
+name: Release installers
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag matching package and Tauri version, e.g. v0.1.1'
+        required: true
+permissions:
+  contents: write
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            target: aarch64-apple-darwin
+          - os: macos-latest
+            target: x86_64-apple-darwin
+          - os: windows-latest
+            target: x86_64-pc-windows-msvc
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+      - run: npm ci
+      - run: npm test
+      - name: Validate version
+        shell: bash
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: node scripts/validate-release.mjs
+      - name: Configure signed updater
+        env:
+          DF_UPDATE_URL: https://github.com/${{ github.repository }}/releases/latest/download/latest.json
+          DF_UPDATE_PUBLIC_KEY: ${{ vars.DF_UPDATE_PUBLIC_KEY }}
+        run: node scripts/configure-release.mjs
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        with:
+          tagName: ${{ inputs.tag }}
+          releaseName: DF Tuning ${{ inputs.tag }}
+          releaseBody: 'DF Tuning desktop release. Publish this draft only after validating all installers.'
+          releaseDraft: true
+          prerelease: false
+          includeUpdaterJson: true
+          args: --target ${{ matrix.target }} --config src-tauri/tauri.release.conf.json

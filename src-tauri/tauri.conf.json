@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "DF Tuning",
+  "version": "0.1.1",
+  "identifier": "hu.dftuning.catalog",
+  "build": {
+    "beforeDevCommand": "npm run dev -- --port 1420 --strictPort",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "DF Tuning \u2014 Mustang alkatr\u00e9szkatal\u00f3gus",
+        "width": 1440,
+        "height": 950,
+        "minWidth": 780,
+        "minHeight": 620
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; connect-src 'self' ipc: http://ipc.localhost https://api.frankfurter.dev; script-src 'self'; object-src 'none'; base-uri 'self'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "shortDescription": "Magyar Mustang alkatr\u00e9szkatal\u00f3gus",
+    "category": "Business",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEMyQTgxQTI3RDk5OTY5RjMKUldUemFablpKeHFvd2dwZGp6T1NvNXd1N0wwbnNNVkxKUXZZZ0QydkoyRWpiSHo0OW9QMTg4WCsK",
+      "endpoints": []
+    }
+  }
+}
