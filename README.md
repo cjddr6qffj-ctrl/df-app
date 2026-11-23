@@ -2,7 +2,9 @@
 
 Magyar nyelvű, sötét/neonzöld Tauri 2 + React + TypeScript alkalmazás. Desktop módban SQLite; a gyors böngészős előnézetben localStorage. A Tauri az operációs rendszer webnézetét használja, ezért nem csomagol külön Chromiumot, mint az Electron. A desktop buildhez Rust szükséges.
 
-**Állapot (2026. november 17.):** 1867 nyilvános Signeda Mustang tétel, 1828 árral, 1826 legalább egy helyi képpel. 195 ismert kategóriaoldal feldolgozva; a teljes Signeda-kínálat lefedettsége még nincs igazolva. 39 ár és 41 termékfotó hiányzik, a teljes képgaléria sok tételnél még nincs letöltve. Az indulás a helyi katalógust tölti be; a Signeda élő árfrissítés még nem automatikus. Az EUR/HUF árfolyam a Frankfurter nyilvános API-járól frissül, dátummal és offline tartalékkal. Natív telepítő még nem készült.
+**Katalógus:** 2031 aktív Signeda Mustang tétel, mindegyikhez mentett EUR árral. 2192 helyi kép, 1873 terméknél legalább egy fotó; a teljes képgaléria és katalógus lefedettsége még nincs igazolva. A termékárak mellett a tényleges lekérési idő látható. Az EUR/HUF referenciaárfolyam minden indításkor és óránként frissül, offline mentéssel.
+
+**Letöltés:** [DF Tuning kiadások](https://github.com/cjddr6qffj-ctrl/df-app/releases). Az új verziók először kiadási piszkozatként készülnek; a közzétett kiadásokat a telepített kliens induláskor automatikusan ellenőrzi. [Kiadási útmutató](docs/RELEASE.md).
 
 A modellválasztó külön kezeli a 2005–2009, 2010–2014, 2015–2017, 2018–2023 és 2024+ időszakot. Ezek vizuális szűrőcsoportok: az eredeti alkatrész-kompatibilitást nem írják át. A PNG-k generált modellillusztrációk, nem alkatrészfotók.
 
@@ -41,7 +43,7 @@ Windows 10/11:
 4. PowerShellben a projekt könyvtárában: `npm ci`, `npm run desktop`.
 5. `npm run bundle` → a bundle mappában MSI/NSIS telepítő (a Tauri eszközeitől függően).
 
-A platformhoz tartozó telepítőt az adott rendszeren készítsd. A mellékelt manuálisan indítható GitHub Actions workflow macOS és Windows buildet készít, ha **ennek a projektmappának a tartalma kerül a repository gyökerébe**. A workflow nincs lefuttatva. Aláírás/notarizálás és Windows code signing a nyilvános terjesztés előtt külön beállítandó.
+A platformhoz tartozó telepítőt az adott rendszeren készítsd. A mellékelt manuálisan indítható GitHub Actions workflow macOS és Windows buildet készít, ha **ennek a projektmappának a tartalma kerül a repository gyökerébe**. A kiadási workflow külön Mac ARM64, Mac Intel és Windows x64 csomagot készít. Aláírás/notarizálás és Windows code signing a nyilvános terjesztés előtt külön beállítandó.
 
 ## Elkészült funkciók
 
@@ -61,7 +63,7 @@ A `docs/demo-feed.json` az Adatkezelés oldalon importálható mintafájl. Hitel
 
 A teljes séma a `src/model.ts` fájlban található. Fő mezők: `id`, `sku`, `oem[]`, `name`, `nameHu`, `aliases[]`, `category`, `generation`, `yearFrom`, `yearTo`, `model: "Ford Mustang"`, `fitment`, `brand`, `price`, `currency`, `availability`, `images[]`, `url`, `source`, `checkedAt`.
 
-Képek: PNG/JPEG/WebP base64 data URL, maximum 12 kép/termék, kb. 2 MB/kép. Import: maximum 40 MB és 20 000 rekord. Ezek MVP-korlátok; teljes katalógushoz külön fájlos képtár és SQLite terméktábla/FTS-index szükséges. Jelenleg a validált katalógus JSON-ként tárolódik SQLite-ban; a keresés memóriában történik. Nagy katalógusra nincs teljesítménygarancia.
+Képek: PNG/JPEG/WebP base64 data URL, maximum 100 kép/termék, kb. 2 MB/kép. Import: maximum 40 MB és 20 000 rekord. Ezek MVP-korlátok; teljes katalógushoz külön fájlos képtár és SQLite terméktábla/FTS-index szükséges. Jelenleg a validált katalógus JSON-ként tárolódik SQLite-ban; a keresés memóriában történik. Nagy katalógusra nincs teljesítménygarancia.
 
 ## Külső szinkronmodul
 
