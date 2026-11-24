@@ -8,6 +8,7 @@ export const productSchema = z.object({
  variantTags:z.array(z.string()).optional(),
  fitments:z.array(z.object({sourceModel:z.string(),generation:z.enum(['S197','S550','S650']),yearFrom:z.number(),yearTo:z.number().nullable()})).optional(),
  model:z.literal('Ford Mustang'), fitment:z.string().max(1000), brand:z.string().max(100), price:z.number().nonnegative().max(1e8).nullable(), currency:z.enum(['EUR','HUF','USD']),
+ galleryCheckedAt:z.string().datetime().nullable().optional(), galleryStatus:z.enum(['pending','complete','source-empty']).optional(),
  availability:z.enum(['available','unavailable','unknown']), images:z.array(safeImage).max(100),
  url:z.string().url().refine(s=>{const u=new URL(s);return u.protocol==='https:' && ['signeda.lt','www.signeda.lt','signeda.com','www.signeda.com'].includes(u.hostname)&&!u.username&&!u.password;}),
  priceCheckedAt:z.string().datetime().nullable().optional(), detailCheckedAt:z.string().datetime().nullable().optional(), priceIncludesVat:z.number().nullable().optional(), fitmentVerified:z.boolean().optional(),

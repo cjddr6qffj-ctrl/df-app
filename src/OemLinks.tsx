@@ -1,0 +1,7 @@
+import {useState} from 'react';
+import type {Product} from './model';
+import {commonOem,relatedByOem,fitmentSummary} from './fitment-search';
+export function OemLinks({selected,products,onSearch,onOpen}:{selected:Product;products:Product[];onSearch:(oem:string)=>void;onOpen:(p:Product)=>void}){
+ const [expanded,setExpanded]=useState(false);const related=relatedByOem(products,selected);
+ return <section className="oem-links"><p className="muted">{fitmentSummary(selected)}</p><h3>OEM-keresés</h3>{selected.oem.length?<div className="oem-buttons">{selected.oem.map(code=><button key={code} onClick={()=>onSearch(code)} aria-label={`${code} OEM összes találata`}>{code}</button>)}</div>:<p className="muted">Ehhez a termékhez még nincs OEM-adat a helyi katalógusban.</p>}{related.length>0&&<><h3>Közös OEM-számmal listázott termékek ({related.length})</h3><p className="muted">Forrás szerinti keresztazonosítás; önmagában nem igazolja az azonos kivitelhez való illeszkedést.</p><div className="oem-related">{related.slice(0,expanded?related.length:8).map(p=><button key={p.id} onClick={()=>onOpen(p)}><strong>{p.sku} · {p.nameHu}</strong><small>{p.brand} · {commonOem(selected,p).join(', ')}</small><span>{p.price===null?'Nincs ár':new Intl.NumberFormat('hu-HU',{style:'currency',currency:p.currency}).format(p.price)}</span></button>)}</div>{!expanded&&related.length>8&&<button onClick={()=>setExpanded(true)}>Mind a {related.length} találat</button>}</>}</section>;
+}

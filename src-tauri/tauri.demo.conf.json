@@ -1,0 +1,16 @@
+{
+  "productName": "DF Tuning Demo",
+  "version": "0.1.2-dev",
+  "identifier": "hu.dftuning.catalog.demo",
+  "bundle": {
+    "createUpdaterArtifacts": false
+  },
+  "plugins": {
+    "updater": {
+      "endpoints": []
+    }
+  },
+  "build": {
+    "beforeBuildCommand": "npm run build:demo"
+  }
+}

@@ -2,7 +2,7 @@
 
 Magyar nyelvű, sötét/neonzöld Tauri 2 + React + TypeScript alkalmazás. Desktop módban SQLite; a gyors böngészős előnézetben localStorage. A Tauri az operációs rendszer webnézetét használja, ezért nem csomagol külön Chromiumot, mint az Electron. A desktop buildhez Rust szükséges.
 
-**Katalógus:** 2031 aktív Signeda Mustang tétel, mindegyikhez mentett EUR árral. 2192 helyi kép, 1873 terméknél legalább egy fotó; a teljes képgaléria és katalógus lefedettsége még nincs igazolva. A termékárak mellett a tényleges lekérési idő látható. Az EUR/HUF referenciaárfolyam minden indításkor és óránként frissül, offline mentéssel.
+**Katalógus:** 2031 aktív Signeda Mustang tétel, mindegyikhez mentett EUR árral. 2195 helyi kép, 1876 terméknél legalább egy fotó; a teljes képgaléria és katalógus lefedettsége még nincs igazolva. A termékárak mellett a tényleges lekérési idő látható. Az EUR/HUF referenciaárfolyam minden indításkor és óránként frissül, offline mentéssel.
 
 **Letöltés:** [DF Tuning kiadások](https://github.com/cjddr6qffj-ctrl/df-app/releases). Az új verziók először kiadási piszkozatként készülnek; a közzétett kiadásokat a telepített kliens induláskor automatikusan ellenőrzi. [Kiadási útmutató](docs/RELEASE.md).
 
@@ -79,10 +79,56 @@ Működés: soros kérések, minimum 3 másodperc (alapérték 5), robots.txt k�
 
 A hibás termék régi rekordját megőrzi, a sikereseket frissíti. A készlet eltűnésből nem következtethető ki. Atomi átnevezéssel teszi közzé a feedet, napló `.report.json`, párhuzamos futást `.lock` gátolja. Megszakított folyamat után a `.lock` fájlt csak akkor töröld, ha nincs futó szinkron. Kilépési kód 2: részleges hiba; 1: konfiguráció/fatális hiba. A képkorlát túllépése nem írja felül a korábbi feedet.
 
-**Az alkalmazás induláskor a helyi feedet olvassa újra. A külső hálózati szinkronizáló nincs automatikusan elindítva vagy időzítve.** Ez az élő forrás ellenőrzésének hiányában szándékos; valódi induláskori árfrissítéshez még a jóváhagyott forrás bekötése szükséges.
+**A fejlesztői desktop kliens induláskor automatikusan ellenőrzi a 24 óránál régebbi EUR termékárakat.** A nyilvános 0.1.1 kiadás ezt még nem tartalmazza. A natív `check_product_price` kizárólag Signeda-termékoldalakat kér le, ellenőrzi a robots.txt-t és a pontos cikkszámot, és kizárólag a kiválasztott termék EUR árát olvassa. Minimum 5 másodperces ütemezés, három próbálkozás átmeneti hibára, 403/429/biztonsági ellenőrzés esetén leállás. A sikeres árak külön SQLite-állapotba kerülnek; a kép/OEM/illeszkedési mezők változatlanok. Újraindításkor a még régi árakkal folytatódik. A teljes katalógus ideje legalább kb. 3 óra, a hálózattól és előírt várakozástól függően. Az ablak bezárása leállítja a munkát; a böngészős előnézetben nincs natív árlekérés. A helyi JSON-feed importálása továbbra is működik.
+
+A Signeda legutóbbi biztonsági korlátozása miatt sikeres teljes élő frissítés még nincs igazolva. Nem használunk böngészős sütiket, CAPTCHA-megkerülést vagy rejtett végpontot. Tartós hozzáférési korlátozás esetén Signeda által biztosított API/feed vagy a DF Tuning kliens engedélyezése szükséges. A parser és hibakezelés helyi tesztjei hálózati lekérés nélkül futnak.
+
+A robots-illesztés a [robotstxt könyvtárat](https://docs.rs/robotstxt/0.3.0/robotstxt/) használja; a HTML mezőket a [scraper](https://docs.rs/scraper/0.24.0/scraper/) olvassa.
 
 ## Ellenőrzés és korlátok
 
-A tesztek keresést, invalid importot, generációt, Mach-E kizárást, backoffot, Retry-After-t és részleges frissítést fednek le. A `npm run build` TypeScript ellenőrzést és production frontend buildet végez. Natív fordítás és a valódi hálózati feed integrációja külön ellenőrzendő.
+A tesztek keresést, invalid importot, generációt, Mach-E kizárást, backoffot, Retry-After-t és részleges frissítést fednek le. A `npm run build` TypeScript ellenőrzést és production frontend buildet végez. A natív Mac-fordítás és az 5 natív árfrissítőteszt sikeres; a 25 alkalmazásteszt is sikeres. A teljes élő Signeda-ellenőrzés és a Windows-futtatás külön igazolandó.
 
 Nincs rendelésleadás, fizetés, felhasználói belépés, automatikus háttérszolgáltatás vagy teljes Signeda-katalógus. A kedvencek helyi listát alkotnak. A helyi adatok törlése az adott alkalmazás-adatmappa törlésével történik; ezt a program nem végzi automatikusan.
+
+### Katalógus ellenőrzése és folytatása
+
+`npm run catalog:build` újraépíti a mentett Signeda-adatokból a katalógust, majd ellenőrzi az adatmodellt és minden hivatkozott WebP fájlt. A korábban csomagolt, bővebb galéria akkor is megmarad, ha az ideiglenes letöltések már hiányoznak. A régi letöltési mappa opcionálisan a `DF_LEGACY_DOWNLOADS` változóval adható meg.
+
+`npm run catalog:audit` csak helyi ellenőrzést végez. A `data/signeda/catalog-audit.json` külön felsorolja a hiányzó képeket, OEM-adatokat, árakat és 24 óránál régebbi árakat. A `repair-queue.json` a hiányzó fotókat veszi előre. Az üres kezdeti galéria nem bizonyítja, hogy a forrásnál nincs kép. A teljes lefedettséget csak új forrásoldali összevetés igazolhatja.
+
+2026-11-23: 29 termék ára újraellenőrizve; 5 megváltozott ár, 43 további OEM-hivatkozás és 3 új fotó mentve. A további böngészős lekéréseket a Signeda biztonsági ellenőrzése megállította. A teljes galériaellenőrzés még nincs kész. Az automatikus árfrissítő a fejlesztői változatba bekerült, de sikeres élő frissítése még nincs igazolva. Ezek fejlesztői változtatások; a nyilvános 0.1.1 telepítő nem változott.
+
+### OEM- és kivitelszűrés
+
+A pontos OEM-egyezés elválasztó- és kisbetű/nagybetű-független. Pontos egyezésnél az OEM-találatok jelennek meg; az aktív szűrők feloldhatók az Összes OEM-találat gombbal. Az adatlapon kattintható OEM-ek és közvetlenül közös OEM-mel listázott termékek láthatók. Nem alkalmazunk tranzitív helyettesítést, és az OEM-egyezés nem VIN-szintű illeszkedési bizonyíték.
+
+A kivitel szűrése csak a Modelio detalės mező egyértelmű, önálló kiviteljelölését használja. Kizárásos, évjáratos és összetett szövegből nem következtetünk. Az ismeretlen kivitelű tételek külön elrejthetők. A Performance Package megfelelést igazolt adat hiányában nem állítjuk. A helyi katalógusban hiányzó OEM-ek pótlása továbbra is forrásadatot igényel.
+
+Az OEM- és kivitelváltoztatások után 29 alkalmazásteszt sikeres. Böngészős próba: JR3B-17B613-A → PFDB2014A és PFDB2055A; közös OEM-navigáció és GT-szűrő ellenőrizve.
+
+### Árajánlatok (fejlesztői változat)
+
+A termékkép bal felső + gombja az aktív ajánlathoz adja a terméket; ismételt hozzáadás növeli a mennyiséget. Az Ajánlatok (0/1) gomb az oldalsáv alján nyitja az ajánlatokat. A szürke állapotban is elérhető a mentett lista. A vevő neve és telefonszáma szerkeszthető; a magyar megnevezés átírható. Cikkszám/OEM nem kerül az ajánlatba és PDF-be.
+
+A felhasználó kérése szerint a Signeda-ár **nettó ajánlati alapár**, levonás nélkül; ez az ajánlat üzleti beállítása. Az EUR ár a hozzáadáskori, ajánlathoz rögzített EUR/HUF árfolyammal alakul át HUF-ra. A nettó vagy bruttó egységár szerkesztése megőrzi a legutóbb bevitt oldal értékét, és számítja a másikat. Az áfa alapértelmezetten 27%, szerkeszthető. Az ajánlatszintű százalékos kedvezmény az összesítőben érvényesül, az egységárak kedvezmény előttiek. Hiányzó ár/árfolyam nem válik automatikusan nullává. A 0-s ár tudatosan beírható. Maximum 500 sor, 9999 darab/sor és 10 millió Ft egységár.
+
+Az ajánlatok automatikusan a helyi SQLite állapotba mentődnek (`quotes-v1`); böngészőben localStorage. A Mentés gomb a listára teszi az ajánlatot, a Lezárás írásvédetté teszi, a Szerkesztés újra feloldja. Törlés egyenként vagy kijelöléssel, megerősítéssel. Sorszám: DF-év-hatjegyű számláló, a törlés nem használja újra a sorszámot. A sorszám helyi telepítésenként értendő; nincs több gép közötti ajánlatszinkron.
+
+A PDF-export a desktop kliensben az operációs rendszer Asztal mappájába ment, vevőnévvel és ajánlatszámmal, meglévő fájl felülírása nélkül. A böngészős előnézet letöltést indít. A PDF beágyazott magyar betűtípust, fekete, átlátszó hátterű DF-logót és többoldalas táblázatot használ. A betűtípus licence: `public/fonts/LICENSE-DejaVu.txt`. A PDF nem számla; nincs benne kitalált céges cím vagy adószám.
+
+Ellenőrzés: 35 alkalmazásteszt, 7 natív teszt; böngészőben hozzáadás, nettó/bruttó átszámítás, kedvezmény, mentés, újratöltés, lezárás és tényleges PDF-letöltés. Egy- és többoldalas PDF-ek képként renderelve ellenőrizve.
+
+### Megszakítás után folytatható képpótlás
+
+`node scripts/audit-source-coverage.mjs` összeveti a mentett kategóriaoldalakat a katalógussal, és előállítja a képhiányok listáját. Ez nem bizonyítja az aktuális élő kínálat teljességét.
+`node scripts/recover-images.mjs` először ellenőrzi a robots-szabályokat, majd legfeljebb 25 ismert képet tölt le, legalább 5 másodperces szünetekkel. HTTP 401/403/429 esetén leáll. Minden képet és haladást külön ment; újraindítva átugorja a már meglévő képeket.
+Sikeres letöltés után `npm run catalog:build` beemeli őket. A `data/signeda/image-recovery-progress.json` tartalmazza a megállás okát és a kész letöltéseket.
+
+### Saját DF nettó árak
+
+Az Árazás menüben a nyilvános teljes nettó és a DF beszerzési nettó ár között lehet váltani, 0–1000% felárral. Az ajánlat a kiválasztott nettó árból készül, 27% áfával. A már mentett ajánlatok árai nem változnak. Hiányzó DF-ár esetén nincs nyilvánosár-helyettesítés.
+
+A saját árak nem részei a repónak vagy a telepítőnek. A natív app induláskor a saját adatkönyvtárából olvassa a `df-private-prices.json` fájlt, ellenőrzi, majd helyi SQLite-ba menti. macOS: `~/Library/Application Support/hu.dftuning.catalog/`; Windows: `%APPDATA%/hu.dftuning.catalog/`. A demó azonosítója `.demo` végű. Formátum: termékazonosítóval kulcsolt objektum, értékei `sku`, a katalógus szerinti `url`, `price` (nettó EUR), `currency: "EUR"`, `checkedAt` (ISO dátum). Régebbi bejegyzés nem ír felül frissebbet. Új gépen a saját állományt külön, biztonságosan kell átadni, és az appot újraindítani.
+
+2026-11-24: 2031 katalógustételből 2026-hoz ellenőrzött DF-ár. A Signeda keresőjében RTEDC00082, RTEDC00065, RTEDC00066, RTEDC00089 és RAEDC00285 nem mutatott árat. A DF-árak mentett pillanatképek: a nyilvános háttérfrissítés nem frissíti a bejelentkezéshez kötött árakat. A bejelentkezett munkamenet és jelszó nem kerül a kliensbe.

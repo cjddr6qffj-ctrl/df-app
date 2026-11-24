@@ -19,6 +19,8 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - run: npm ci
       - run: npm test
+      - name: Native tests
+        run: cargo test --manifest-path src-tauri/Cargo.toml --lib --locked
       - run: npm run bundle
       - uses: actions/upload-artifact@v4
         with:

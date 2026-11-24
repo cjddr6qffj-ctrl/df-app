@@ -2,7 +2,7 @@ import {useEffect,useRef,useState} from 'react';
 import {native} from './store';
 import {check,type Update} from '@tauri-apps/plugin-updater';
 import {relaunch} from '@tauri-apps/plugin-process';
-const configured=import.meta.env.VITE_UPDATER_ENABLED==='true';
+const configured=import.meta.env.MODE!=='demo'&&import.meta.env.VITE_UPDATER_ENABLED==='true';
 export function Updater(){
  const [message,setMessage]=useState(''),[available,setAvailable]=useState<Update|null>(null),[busy,setBusy]=useState(false);const lock=useRef(false);
  async function inspect(){if(lock.current||!native||!configured)return;lock.current=true;try{const update=await check({timeout:15000});setAvailable(update);setMessage(update?`Új verzió: ${update.version}`:'Az alkalmazás naprakész.');}catch{setMessage('A frissítés most nem ellenőrizhető. A jelenlegi verzió használható.');}finally{lock.current=false;}}

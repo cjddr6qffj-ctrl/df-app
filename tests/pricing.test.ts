@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {pricedProduct,dfPricesSchema,pricingSchema,type DfPrices} from '../src/pricing';
+import {addQuoteProduct,emptyBook,units} from '../src/quotes';
+import type {Product} from '../src/model';
+const p={id:'signeda-1',sku:'ABC',url:'https://www.signeda.lt/test-p1',nameHu:'Lengőkar',currency:'EUR',price:100,priceCheckedAt:'2026-11-24T10:00:00Z'} as Product;
+const df:DfPrices={'signeda-1':{sku:'ABC',url:p.url,price:60,currency:'EUR' as const,checkedAt:'2026-11-24T11:00:00Z'}};
+test('public and private bases remain separate and markup applies to the selected net price',()=>{assert.equal(pricedProduct(p,{source:'public',markup:20},df).price,120);assert.equal(pricedProduct(p,{source:'df',markup:20},df).price,72);assert.equal(p.price,100);assert.equal(df[p.id].price,60);});
+test('missing, wrong SKU or wrong source cannot fall back to public prices',()=>{for(const prices of [{},{...df,[p.id]:{...df[p.id],sku:'WRONG'}},{...df,[p.id]:{...df[p.id],url:'https://www.signeda.lt/other-p2'}}]){const result=pricedProduct(p,{source:'df',markup:0},prices);assert.equal(result.price,null);assert.equal(result.priceCheckedAt,null);}});
+test('DF markup enters offer as net with exactly 27 percent VAT',()=>{const priced=pricedProduct(p,{source:'df',markup:20},df);const q=addQuoteProduct(emptyBook,priced,400,'2026-11-24').quotes[0];assert.equal(q.vat,27);assert.deepEqual(units(q.lines[0],q.vat),{net:2880000,gross:3657600});});
+test('reject malformed price and markup imports',()=>{assert.equal(dfPricesSchema.safeParse({...df,[p.id]:{...df[p.id],price:-1}}).success,false);assert.equal(pricingSchema.safeParse({source:'df',markup:Infinity}).success,false);});

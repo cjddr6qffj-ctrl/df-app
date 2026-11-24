@@ -1,0 +1,7 @@
+import {useEffect,useRef,useState} from 'react';import {read,write} from './store';import {emptyBook,quoteBookSchema,type QuoteBook,addQuoteProduct} from './quotes';import type {Product} from './model';import type {Fx} from './fx';
+export function useQuotes(ready:boolean){const [book,setBook]=useState<QuoteBook>(emptyBook),[loaded,setLoaded]=useState(false),[error,setError]=useState(''),[saving,setSaving]=useState(false);const ref=useRef(book),queue=useRef(Promise.resolve());
+ useEffect(()=>{if(!ready)return;let live=true;void read('quotes-v1',emptyBook).then(raw=>{const b=quoteBookSchema.parse(raw);if(live){ref.current=b;setBook(b);setLoaded(true);}}).catch(()=>setError('Az ajánlatok nem tölthetők be. A tárolt adatokat nem írtuk felül.'));return()=>{live=false;};},[ready]);
+ function change(fn:(b:QuoteBook)=>QuoteBook){if(!loaded)return;try{const next=quoteBookSchema.parse(fn(ref.current));ref.current=next;setBook(next);setSaving(true);const task=queue.current.catch(()=>{}).then(()=>write('quotes-v1',next));queue.current=task;void task.then(()=>{if(queue.current===task){setSaving(false);setError('');}}).catch(()=>{if(queue.current===task){setSaving(false);setError('A mentés nem sikerült. Ne zárd be az appot; próbáld újra a Mentés gombbal.');}});}catch(e){setError(String(e));}}
+ function add(p:Product,fx:Fx|null){change(b=>addQuoteProduct(b,p,fx?.rate??null,fx?.date??null));}
+ return {book,loaded,error,saving,change,add};
+}

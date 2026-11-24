@@ -1,6 +1,6 @@
 {
   "name": "df-tuning-desktop",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "type": "module",
   "scripts": {
@@ -11,15 +11,21 @@
     "tauri": "tauri",
     "desktop": "tauri dev",
     "bundle": "tauri build",
-    "sync": "node --import tsx scripts/sync.ts"
+    "sync": "node --import tsx scripts/sync.ts",
+    "catalog:audit": "node --import tsx scripts/audit-catalog.ts",
+    "catalog:build": "node scripts/build-catalog.mjs && npm run catalog:audit",
+    "build:demo": "tsc --noEmit && vite build --mode demo",
+    "bundle:demo": "tauri build --config src-tauri/tauri.demo.conf.json"
   },
   "dependencies": {
+    "@pdf-lib/fontkit": "^1.1.1",
     "@tauri-apps/api": "^2.0.0",
     "@tauri-apps/plugin-opener": "^2.7.3",
     "@tauri-apps/plugin-process": "^2.4.0",
     "@tauri-apps/plugin-sql": "^2.0.0",
     "@tauri-apps/plugin-updater": "^2.14.1",
     "lucide-react": "^0.468.0",
+    "pdf-lib": "^1.17.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "robots-parser": "^3.0.1",

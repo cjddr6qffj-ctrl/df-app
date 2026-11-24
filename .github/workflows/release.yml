@@ -31,6 +31,8 @@ jobs:
           targets: ${{ matrix.target }}
       - run: npm ci
       - run: npm test
+      - name: Native tests
+        run: cargo test --manifest-path src-tauri/Cargo.toml --lib --locked
       - name: Validate version
         shell: bash
         env:

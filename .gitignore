@@ -14,3 +14,6 @@ data/
 delivery/
 df-tuning-desktop/
 .DS_Store
+
+output/
+tmp/
